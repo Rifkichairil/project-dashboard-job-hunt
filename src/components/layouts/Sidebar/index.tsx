@@ -1,4 +1,7 @@
+"use client"
+
 import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 import React, { FC } from 'react'
 import { AiOutlineHome, AiOutlineMail, AiOutlineUserSwitch, AiOutlineCalendar, AiOutlineSetting } from "react-icons/ai";
 import { HiOutlineBuildingOffice2, HiOutlineDocumentText } from "react-icons/hi2";
@@ -10,6 +13,7 @@ interface SidebarProps {
 }
 
 const Sidebar: FC<SidebarProps> = ({  }) => {
+    const router = useRouter();
     return (
         <div className='pb-12 min-h-screen'>
             {/* Menus */}
@@ -19,7 +23,9 @@ const Sidebar: FC<SidebarProps> = ({  }) => {
                         Dashboard
                     </h2>
                     <div className="space-y-3">
-                        <Button variant={'ghost'} className='w-full justify-start rounded-none hover:text-primary'>
+                        <Button variant={'ghost'} className='w-full justify-start rounded-none hover:text-primary'
+                            onClick={() => router.push('/')}
+                        >
                         <AiOutlineHome className='mr-2 text-lg'/>
                             Home
                         </Button>
@@ -35,7 +41,9 @@ const Sidebar: FC<SidebarProps> = ({  }) => {
                         <AiOutlineUserSwitch  className='mr-2 text-lg'/>
                             All Applicants
                         </Button>
-                        <Button variant={'ghost'} className='w-full justify-start rounded-none hover:text-primary'>
+                        <Button variant={'ghost'} className='w-full justify-start rounded-none hover:text-primary'
+                            onClick={() => router.push('/job-listings')}
+                        >
                         <HiOutlineDocumentText  className='mr-2 text-lg'/>
                             Job Listing
                         </Button>
